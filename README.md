@@ -1,4 +1,4 @@
-# Repository for Htool's Documentation
+# Repository for Htool's Documentation [![Documentation Status](https://readthedocs.org/projects/htool-documentation/badge/?version=latest)](https://htool-documentation.readthedocs.io/en/latest/?badge=latest)
 
 ## What is Htool?
 
