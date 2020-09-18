@@ -3,6 +3,11 @@
 Basic usage -- C++
 ******************
 
+follow un simple example:
+IMatrix
+constructeurs
+parameters
+
 Defining a geometry
 -------------------
 
