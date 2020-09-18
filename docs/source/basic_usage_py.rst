@@ -1,6 +1,6 @@
 
 *********************
-User manual -- Python
+Basic usage -- Python
 *********************
 
 Defining a geometry

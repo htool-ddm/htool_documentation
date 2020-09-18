@@ -14,7 +14,7 @@ Welcome to Htool's documentation!
    installation
    basic_usage_cpp
    basic_usage_py
-   dev_manual
+   advanced_usage
 
 .. Indices and tables
 .. ==================

@@ -3,6 +3,14 @@
 Installation
 ************
 
-	requirements
-	compilation, cmake, python ?
-	testing
+
+Requirements
+------------
+
+
+C++
+---
+
+
+Python
+------
