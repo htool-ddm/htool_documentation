@@ -10,6 +10,8 @@ Welcome to Htool's documentation!
    :maxdepth: 4
    
    introduction
+   overview
+   installation
    user_manual_cpp
    user_manual_py
    dev_manual
