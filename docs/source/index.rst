@@ -12,8 +12,8 @@ Welcome to Htool's documentation!
    introduction
    overview
    installation
-   user_manual_cpp
-   user_manual_py
+   basic_usage_cpp
+   basic_usage_py
    dev_manual
 
 .. Indices and tables
