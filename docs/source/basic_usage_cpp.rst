@@ -1,7 +1,7 @@
 
-******************
+
 Basic usage -- C++
-******************
+##################
 
 follow un simple example:
 IMatrix
