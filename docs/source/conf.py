@@ -34,7 +34,7 @@ master_doc = 'index'
 # ones.
 extensions = [
     'sphinx_rtd_theme',
-    'sphinxcontrib.rsvgconverter'
+    'sphinxcontrib.rsvgconverter',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
