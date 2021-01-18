@@ -6,6 +6,7 @@
 .. include:: readme.rst
 
 .. only:: not latex
+
    **Contents**
 
 .. toctree::
