@@ -23,7 +23,7 @@ At the root of the `repository <https://github.com/htool-ddm/htool_documentation
 
 .. code-block:: bash
 
-    pip install -r requirement.txt
+    pip install -r requirements.txt
 
 It will install the necessary dependencies. The documentation can be built using a ``<builder>``
 

@@ -17,6 +17,9 @@ Htool -- Parallelised hierarchical matrices
    * - |cpp_ci|
      - |python_ci|
      - |docs_ci| 
+   * - |cpp_cov|
+     - |python_cov|
+     - 
 
 
 
@@ -27,16 +30,17 @@ For a more advanced usage, it also offers a modular framework where one can modi
 
 
 About
-   Htool has been developed and is maintained by `Pierre Marchand <https://pierremarchand.netlify.app>`_  and Pierre-Henri Tournier. If you need help or have questions regarding Htool, feel free to contact them.
+   Htool has been developed and is maintained by `Pierre Marchand <https://pierremarchand.netlify.app>`_ and Pierre-Henri Tournier. If you need help or have questions regarding Htool, feel free to contact them.
 
 
 License
    Htool is licensed under the terms of the MIT license that can be found in the LICENSE file. By using, distributing, or contributing to this project, you agree to the terms and conditions of this license.
 
 Acknowledgements
-   - `ANR NonlocalDD <https://www.ljll.math.upmc.fr/~claeys/nonlocaldd/index.html>`_ , (grant ANR-15-CE23-0017-01), France 
-   - `Inria <http://www.inria.fr/en/>`_ , Paris, France 
-   - `Laboratoire Jacques-Louis Lions <https://www.ljll.math.upmc.fr/en/>`_ ,Paris, France  
+   - `Centre Inria de Saclay - Île-de-France <https://www.inria.fr/en/centre-inria-saclay-ile-de-france>`_, France 
+   - `ANR NonlocalDD <https://www.ljll.math.upmc.fr/~claeys/nonlocaldd/index.html>`_, (grant ANR-15-CE23-0017-01), France 
+   - `Centre Inria de Paris <https://www.inria.fr/en/centre-inria-de-paris>`_, France 
+   - `Laboratoire Jacques-Louis Lions <https://www.ljll.math.upmc.fr/en/>`_,Paris, France
 
 
 
@@ -55,11 +59,18 @@ Collaborators/contributors
    :alt: doc
    :target: https://htool-documentation.readthedocs.io/en/latest/
 
-.. |cpp_ci| image:: https://travis-ci.com/htool-ddm/htool.svg?branch=master
+.. |cpp_ci| image:: https://github.com/htool-ddm/htool/actions/workflows/CI.yml/badge.svg
    :alt: cpp
    :target: https://github.com/htool-ddm/htool
 
-.. |python_ci| image:: https://travis-ci.com/htool-ddm/htool_python.svg?branch=master
+.. |python_ci| image:: https://github.com/htool-ddm/htool_python/actions/workflows/CI.yml/badge.svg
    :alt: python
    :target: https://github.com/htool-ddm/htool_python
 
+.. |cpp_cov| image:: https://codecov.io/gh/htool-ddm/htool/branch/main/graph/badge.svg?token=1JJ40GPFA5
+      :alt: cpp
+      :target: https://codecov.io/gh/htool-ddm/htool
+
+.. |python_cov| image:: https://codecov.io/gh/htool-ddm/htool_python/branch/main/graph/badge.svg?token=P3FQNL8E64
+   :target: https://codecov.io/gh/htool-ddm/htool_python
+   :alt: python

@@ -25,7 +25,8 @@ Why?
 Applications
    Htool has been used so far for
 
-   - the discretization of boundary integral equations, via `FreeFEM <https://freefem.org>`_ for example.
+   - the discretization of boundary integral equations, via `FreeFEM <https://freefem.org>`_,
+   - black box compression, via `PETSc <https://petsc.org/release/>`_.
 
    It could be used for
 
