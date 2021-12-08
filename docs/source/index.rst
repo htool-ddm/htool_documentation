@@ -6,19 +6,36 @@
 .. include:: ../../README.rst
 
 .. only:: not latex
-
+   
    **Contents**
+
+.. toctree::
+   :maxdepth: 2
+
+   introduction/why
+   introduction/overview
+   introduction/getting_started
+
+.. toctree::
+   :maxdepth: 2
+   :caption: C++ API
+
+   cpp_api/basic_usage_cpp
 
 
 .. toctree::
-   :maxdepth: 4
-   
-   introduction
-   overview
-   installation
-   basic_usage_cpp
-   basic_usage_py
-   advanced_usage
+   :maxdepth: 2
+   :caption: Python API
+
+   python_api/basic_usage_py
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Documentation
+
+   documentation/installation
+
 
 .. Indices and tables
 .. ==================
@@ -26,4 +43,3 @@
 .. * :ref:`genindex`
 .. * :ref:`modindex`
 .. * :ref:`search`
-

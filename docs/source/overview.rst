@@ -3,7 +3,7 @@
 Overview
 ########
 
-math
+Low-rank compression
 ----
 clustering, critere d’admissibilité, svd, partialACA, …
 inputs
