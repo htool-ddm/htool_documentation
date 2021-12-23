@@ -1,0 +1,3 @@
+[submodule "docs/htool"]
+	path = docs/htool
+	url = https://github.com/htool-ddm/htool.git

@@ -14,6 +14,8 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 import sphinx_rtd_theme
+import subprocess
+import os
 
 # -- Project information -----------------------------------------------------
 
@@ -37,6 +39,7 @@ extensions = [
     'sphinxcontrib.rsvgconverter',
     'sphinxcontrib.bibtex',
     'sphinx.ext.autosectionlabel',
+    'breathe'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -66,3 +69,18 @@ html_theme = "sphinx_rtd_theme"
 html_static_path = ['_static']
 
 bibtex_bibfiles = ['_static/bibliography.bib']
+
+# -- Breathe Configuration -------------------------------------------------
+breathe_projects = {"Htool": "../htool/build/doc/doc/xml/"}
+breathe_default_members = ('members', 'undoc-members')
+breathe_default_project = "Htool"
+
+
+# -- Doxygen -------------------------------------------------
+
+# Check if we're running on Read the Docs' servers
+read_the_docs_build = os.environ.get('READTHEDOCS', None) == 'True'
+
+if read_the_docs_build:
+    subprocess.call(
+        'mkdir -p ../htool/build/ & cd ../htool/build & cmake ../ & make doc', shell=True)

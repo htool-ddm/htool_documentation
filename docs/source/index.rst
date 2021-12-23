@@ -22,6 +22,7 @@
    :caption: C++ API
 
    cpp_api/basic_usage_cpp
+   cpp_api/reference
 
 
 .. toctree::
