@@ -78,10 +78,24 @@ breathe_default_project = "Htool"
 
 # -- Doxygen -------------------------------------------------
 
+def configureDoxyfile(input_dir, output_dir):
+    with open('../htool/doc/Doxyfile.in', 'r') as file:
+        filedata = file.read()
+
+    filedata = filedata.replace(
+        '@CMAKE_CURRENT_SOURCE_DIR@/../include/htool/', input_dir)
+    filedata = filedata.replace('@CMAKE_CURRENT_BINARY_DIR@/doc/', output_dir)
+
+    with open('Doxyfile', 'w') as file:
+        file.write(filedata)
+
+
 # Check if we're running on Read the Docs' servers
 read_the_docs_build = os.environ.get('READTHEDOCS', None) == 'True'
 
 if read_the_docs_build:
-    subprocess.call(
-        'mkdir -p ../htool/build/ & cd ../htool/build & cmake ../ & make doc & mv doc/doc/xml ../../source/_static ', shell=True)
-    breathe_projects = {"Htool": "../htool/build/doc/doc/xml/"}
+    input_dir = '../htool/include/htool/'
+    output_dir = 'build'
+    configureDoxyfile(input_dir, output_dir)
+    subprocess.call('doxygen', shell=True)
+    breathe_projects['Htool'] = output_dir + '/xml'
