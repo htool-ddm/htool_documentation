@@ -60,7 +60,31 @@ have exponentially decreasing singular values. Thus, they can be well-approximat
 Geometric clustering
 --------------------
 
+To identify sub-blocks satisfying the admissibility condition, a hierarchical partition of the geometry is introduced via a *cluster tree*. Several strategies can be adopted to produce such partitions. A simple example is to partition the geometry by dividing recursively the set of points into two, for example,
+
+.. image:: /_static/cluster_tree.*
+   :width: 90%
+   :align: center
+
+where :math:`Cl_{i}^j` is the :math:`i` th cluster at level :math:`j`, and each figure shows one level of the cluster tree.
+
 Block cluster tree
 ------------------
+
+The geometric clustering described previously defines a block cluster tree as described in the following figure.
+
+.. image:: /_static/block_tree.*
+   :width: 50%
+   :align: center
+
+Then, hierarchical matrices are built traversing the block cluster tree starting from its root, and
+
+- If the current block satisfies the admissibility condition, we approximate it using a low-rank matrix.
+- If the current block does not satisfy the admissibility condition
+
+  - If it is leaf, we compute the block as a dense matrix,
+  - If it is not a leaf, we check the childen of the current block.
+
+
 
 .. bibliography::

@@ -11,6 +11,7 @@
 
 .. toctree::
    :maxdepth: 2
+   :caption: Overview
 
    introduction/why
    introduction/overview
