@@ -83,4 +83,5 @@ read_the_docs_build = os.environ.get('READTHEDOCS', None) == 'True'
 
 if read_the_docs_build:
     subprocess.call(
-        'mkdir -p ../htool/build/ & cd ../htool/build & cmake ../ & make doc', shell=True)
+        'mkdir -p ../htool/build/ & cd ../htool/build & cmake ../ & make doc & mv doc/doc/xml ../../source/_static ', shell=True)
+    breathe_projects = {"Htool": "../htool/build/doc/doc/xml/"}
