@@ -74,6 +74,7 @@ bibtex_bibfiles = ['_static/bibliography.bib']
 breathe_projects = {"Htool": "../htool/build/doc/doc/xml/"}
 breathe_default_members = ('members', 'undoc-members')
 breathe_default_project = "Htool"
+breathe_domain_by_extension = {"hpp": "cpp"}
 
 
 # -- Doxygen -------------------------------------------------

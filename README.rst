@@ -41,6 +41,7 @@ License
 
 Authors
    If you need help or have questions regarding Htool, feel free to contact the main developers or to leave a report on our GitHub issue tracker!
+   
    *Developers:*
 
    - `Pierre Marchand <https://pierremarchand.netlify.app>`_
