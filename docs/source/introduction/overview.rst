@@ -1,4 +1,5 @@
 
+.. _sec_hierarchical_matrices:
 Hierarchical matrices
 #####################
 

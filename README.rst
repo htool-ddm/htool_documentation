@@ -4,15 +4,15 @@
    contain the root `toctree` directive.
 
 
-Htool -- Parallelised hierarchical matrices
-===========================================
+Htool-DDM -- Parallel solvers for compressed matrices
+=====================================================
 
 
 
 
-**Htool** is a lightweight header-only C++11 library that provides an easy-to-use interface for parallel matrix compression via hierarchical matrices. Its goal is to provide minimal linear algebra and linear solvers for such matrices.
+**Htool-DDM** is a lightweight header-only C++14 library that provides an easy-to-use interface for parallel iterative solvers and matrix compression via hierarchical matrices. Its goal is to provide minimal linear algebra and linear solvers for such matrices.
 
-It also offers a modular framework where one can modify, or add other alternatives, for each part of the compression algorithm (low-rank approximation, clustering and admissibility condition). Via its interface with `HPDDM <https://github.com/hpddm/hpddm>`_, it is also a flexible tool to test various iterative solvers and preconditioners.
+It is also an extensible framework which contains several customization points. For example, one can provide its own compression algorithm (low-rank approximation, clustering and/or admissibility condition). Via its interface with `HPDDM <https://github.com/hpddm/hpddm>`_, it is also a flexible tool to test various iterative solvers and preconditioners.
 
 The project is hosted on `GitHub <https://github.com/htool-ddm>`_, under the permissive `MIT license <https://en.wikipedia.org/wiki/MIT_License>`_.
 
@@ -33,8 +33,8 @@ The project is hosted on `GitHub <https://github.com/htool-ddm>`_, under the per
 Projects using Htool
    Htool provides distributed compression using hierarchical matrices, which can be used in many situations. In particular, Htool is used for different applications in the following projects:
 
-   - `FreeFEM <https://freefem.org>`_ to compress matrices stemming from the discretisation of boundary integral equations,
-   - `PETSc <https://petsc.org/release/>`_ for black-box compression.
+   - `FreeFEM <https://freefem.org>`_ to compress matrices stemming from the discretisation of boundary integral equations and iterative solvers,
+   - `PETSc <https://petsc.org/release/>`_ for black-box compression and iterative solvers.
 
 License
    Htool is licensed under the terms of the MIT license that can be found in the LICENSE file. By using, distributing, or contributing to this project, you agree to the terms and conditions of this license.

@@ -5,6 +5,10 @@
 
 .. include:: ../../README.rst
 
+.. raw:: latex
+
+         \tableofcontents
+         
 .. only:: not latex
    
    **Contents**
@@ -18,11 +22,10 @@
    introduction/getting_started
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 4
    :caption: C++ API
 
-   cpp_api/basic_usage_cpp
-   cpp_api/reference
+   cpp_api/index
 
 
 .. toctree::
