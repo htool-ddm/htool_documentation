@@ -5,5 +5,5 @@
    :caption: Overview
 
    basic_usage_cpp/index
-   advance_usage_cpp
+   advance_usage_cpp/index
    reference
