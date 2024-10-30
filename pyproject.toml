@@ -1,0 +1,50 @@
+[project]
+name = "htool_documentation"
+version = "0.1"
+authors = [{ name = "Pierre Marchand", email = "test@test.com" }]
+description = "Htool documentation"
+
+readme = { file = "README.rst", content-type = "text/x-rst" }
+requires-python = ">=3.7"
+license = { text = "MIT License" }
+classifiers = [
+  "Framework :: Sphinx",
+  # "Programming Language :: Python :: 3",
+  # "License :: OSI Approved :: MIT License",
+  # "Operating System :: MacOS",
+  # "Operating System :: Unix"
+]
+keywords = ["htool,documentation"]
+dependencies = [
+  "sphinx",
+  "sphinx-copybutton",
+  "sphinxcontrib-bibtex",
+  "breathe",
+  "furo",
+]
+
+[project.urls]
+Homepage = "https://pmarchand.pages.math.cnrs.fr/computertools/"
+"Issue Tracker" = "https://github.com/htool-ddm/htool_documentation/issues"
+"Source Code" = "https://github.com/htool-ddm/htool_documentation"
+
+[project.optional-dependencies]
+dev = ["ruff"]
+[tool.ruff]
+line-length = 88
+indent-width = 4
+
+[tool.ruff.lint]
+select = [
+  "E",   # pycodestyle
+  "F",   # Pyflakes
+  "UP",  # pyupgrade
+  "B",   # flake8-bugbear
+  "SIM", # flake8-simplify
+  "I",   # isort
+]
+ignore = []
+
+# Allow fix for all enabled rules (when `--fix`) is provided.
+fixable = ["ALL"]
+unfixable = []

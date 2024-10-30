@@ -29,16 +29,13 @@ release = "1.0.0"
 
 # -- General configuration ---------------------------------------------------
 
-master_doc = "index"
-
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    "sphinxcontrib.rsvgconverter",
     "sphinxcontrib.bibtex",
+    "sphinx.ext.autosectionlabel",
     "sphinx_copybutton",
-    "sphinx_contributors",
     "breathe",
 ]
 
@@ -49,6 +46,13 @@ templates_path = ["_templates"]
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ["_build", "links.rst"]
+
+# Numbering figures
+numfig = True
+numfig_secnum_depth = 2
+
+# Smart quotes
+smartquotes = True
 
 # make rst_epilog a variable, so you can add other epilog parts to it
 rst_epilog = ""
@@ -83,7 +87,7 @@ breathe_domain_by_extension = {"hpp": "cpp"}
 
 
 def configureDoxyfile(input_dir, output_dir):
-    with open("../htool/doc/Doxyfile.in", "r") as file:
+    with open("../htool/doc/Doxyfile.in") as file:
         filedata = file.read()
 
     filedata = filedata.replace(
@@ -91,20 +95,13 @@ def configureDoxyfile(input_dir, output_dir):
     )
     filedata = filedata.replace("@CMAKE_CURRENT_BINARY_DIR@/doc/", output_dir)
 
-    with open("Doxyfile", "w") as file:
+    with open("Doxyfile.in", "w") as file:
         file.write(filedata)
 
 
 # Check if we're running on Read the Docs' servers
-read_the_docs_build = os.environ.get("READTHEDOCS", None) == "True"
-
-if read_the_docs_build:
-    input_dir = "../htool/include/htool/"
-    output_dir = "build"
-    configureDoxyfile(input_dir, output_dir)
-    subprocess.call("doxygen", shell=True)
-    breathe_projects["Htool"] = output_dir + "/xml"
-
-# -- Options for LaTeC output -------------------------------------------------
-latex_engine = "lualatex"
-latex_elements = {"tableofcontents": r""}
+input_dir = "../htool/include/htool/"
+output_dir = "build"
+configureDoxyfile(input_dir, output_dir)
+subprocess.call("doxygen", shell=True)
+breathe_projects["Htool"] = output_dir + "/xml"
