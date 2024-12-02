@@ -6,7 +6,7 @@
 
 # -- Path setup --------------------------------------------------------------
 
-import os
+import pathlib
 import subprocess
 
 # If extensions (or modules to document with autodoc) are in another directory,
@@ -103,6 +103,7 @@ def configureDoxyfile(input_dir, output_dir):
 # Check if we're running on Read the Docs' servers
 input_dir = "../htool/include/htool/"
 output_dir = "../build/doxygen"
+pathlib.Path(output_dir).mkdir(exist_ok=True, parents=True)
 configureDoxyfile(input_dir, output_dir)
 subprocess.call("doxygen Doxyfile.in", shell=True)
 breathe_projects["Htool"] = output_dir + "/xml"
