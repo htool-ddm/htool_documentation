@@ -3,7 +3,7 @@
 Why using Htool-DDM?
 ####################
 
-Htool-DDM aims to provide iterative solvers with preconditioners stemming from domain decomposition methods (DDM). It uses matrix compression via **hierarchical matrices**, and in particular, it provides
+Htool-DDM aims to provide iterative solvers with preconditioners stemming from domain decomposition methods (DDM). It uses matrix compression via **hierarchical matrices** by default, and in particular, it provides
 
 - parallel matrix-vector and matrix-matrix product using MPI and OpenMP,
 - iterative solvers via `HPDDM`_,
@@ -11,7 +11,7 @@ Htool-DDM aims to provide iterative solvers with preconditioners stemming from d
 
 
 Why?
-   The storage and cost of assembly for dense matrices are both quadratic with respect to their size, while the cost of using linear solvers is cubic for direct solvers. For iterative solvers, the matrix-vector product has quadratic complexity, which is to be multiplied by the number of iterations. To reduce these costs, several compression techniques have been developed, which gives approximated representation of matrix-vector product and other operations. Htool provides compression via :ref:`sec_hierarchical_matrices`, and emphasize has been put on
+   The storage and cost of assembly for dense matrices are both quadratic with respect to their size, while the cost of using linear solvers is cubic for direct solvers. For iterative solvers, the matrix-vector product has quadratic complexity, which is to be multiplied by the number of iterations. To reduce these costs, several compression techniques have been developed, which gives approximated representation of matrix-vector product and other operations. Htool-DDM provides default compression via :ref:`sec_hierarchical_matrices`, and emphasize has been put on
 
    - parallelisation for **high-performance computing**, 
    - a **black box** interface, to tackle a great variety of problems.

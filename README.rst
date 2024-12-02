@@ -10,9 +10,9 @@ Htool-DDM -- Parallel solvers for compressed matrices
 
 
 
-**Htool-DDM** is a lightweight header-only C++14 library that provides an easy-to-use interface for parallel iterative solvers and matrix compression via hierarchical matrices. Its goal is to provide minimal linear algebra and linear solvers for such matrices.
+**Htool-DDM** is a lightweight header-only C++14 library that provides an easy-to-use interface for parallel iterative solvers and a default matrix compression via in-house hierarchical matrix implementation. Its goal is to provide modern iterative solvers for dense/compressed linear systems.
 
-It is also an extensible framework which contains several customization points. For example, one can provide its own compression algorithm (low-rank approximation, clustering and/or admissibility condition). Via its interface with `HPDDM <https://github.com/hpddm/hpddm>`_, it is also a flexible tool to test various iterative solvers and preconditioners.
+It is also an extensible framework which contains several customization points. For example, one can provide its own compression algorithm, or customize the default hierarchical compression. Via its interface with `HPDDM <https://github.com/hpddm/hpddm>`_, it is also a flexible tool to test various iterative solvers and preconditioners.
 
 The project is hosted on `GitHub <https://github.com/htool-ddm>`_, under the permissive `MIT license <https://en.wikipedia.org/wiki/MIT_License>`_.
 
@@ -31,7 +31,7 @@ The project is hosted on `GitHub <https://github.com/htool-ddm>`_, under the per
      - 
 
 Projects using Htool
-   Htool provides distributed compression using hierarchical matrices, which can be used in many situations. In particular, Htool is used for different applications in the following projects:
+   Htool-DDM provides distributed solvers and black-box hierarchical compression. It can be used directly in C++, via its Python interface, or in the following projects:
 
    - `FreeFEM <https://freefem.org>`_ to compress matrices stemming from the discretisation of boundary integral equations and iterative solvers,
    - `PETSc <https://petsc.org/release/>`_ for black-box compression and iterative solvers.
