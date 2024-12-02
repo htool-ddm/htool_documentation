@@ -102,7 +102,7 @@ def configureDoxyfile(input_dir, output_dir):
 
 # Check if we're running on Read the Docs' servers
 input_dir = "../htool/include/htool/"
-output_dir = "../build"
+output_dir = "../build/doxygen"
 configureDoxyfile(input_dir, output_dir)
 subprocess.call("doxygen Doxyfile.in", shell=True)
 breathe_projects["Htool"] = output_dir + "/xml"
