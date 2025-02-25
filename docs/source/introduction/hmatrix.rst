@@ -1,9 +1,7 @@
-
-.. _sec_hierarchical_matrices:
 Hierarchical matrices
 #####################
 
-We give here a quick overview on hierarchical matrices, and we refer to :cite:t:`Hackbusch2016,Bebendorf2008,Boerm2003` for a detailed presentation.
+We give here a quick overview on hierarchical matrices, and we refer to :footcite:cts:`Hackbusch2016,Bebendorf2008,Boerm2003` for a detailed presentation. The presentation and figures are taken from :footcite:t:`Marchand2020SMB`.
 
 Low-rank compression
 ====================
@@ -88,4 +86,4 @@ Then, hierarchical matrices are built traversing the block cluster tree starting
 
 
 
-.. bibliography::
+.. footbibliography::

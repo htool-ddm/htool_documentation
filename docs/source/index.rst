@@ -18,21 +18,30 @@
    :caption: Overview
 
    introduction/why
-   introduction/overview
+   introduction/hmatrix
+   introduction/ddm
    introduction/getting_started
 
 .. toctree::
    :maxdepth: 4
    :caption: C++ API
 
-   cpp_api/index
+   cpp_api/quickstart
+   cpp_api/basic_usage/index
+   cpp_api/advanced_usage
+   cpp_api/developer_guide
+   cpp_api/reference/index
+
 
 
 .. toctree::
    :maxdepth: 2
    :caption: Python API
 
-   python_api/basic_usage_py
+   python_api/quickstart
+   python_api/basic_usage
+   python_api/advanced_usage
+   python_api/developer_guide
 
 
 .. toctree::

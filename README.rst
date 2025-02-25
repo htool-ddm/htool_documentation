@@ -12,29 +12,26 @@ Htool-DDM -- Parallel solvers for compressed matrices
 
 **Htool-DDM** is a lightweight header-only C++14 library that provides an easy-to-use interface for parallel iterative solvers and a default matrix compression via in-house hierarchical matrix implementation. Its goal is to provide modern iterative solvers for dense/compressed linear systems.
 
-It is also an extensible framework which contains several customization points. For example, one can provide its own compression algorithm, or customize the default hierarchical compression. Via its interface with `HPDDM <https://github.com/hpddm/hpddm>`_, it is also a flexible tool to test various iterative solvers and preconditioners.
+It is also an extensible framework which contains several customization points. For example, one can provide its own compression algorithm, or customize the default hierarchical compression. Via its interface with `HPDDM`_, it is also a flexible tool to test various iterative solvers and preconditioners.
 
 The project is hosted on `GitHub <https://github.com/htool-ddm>`_, under the permissive `MIT license <https://en.wikipedia.org/wiki/MIT_License>`_.
 
 .. list-table::
    :header-rows: 1
-   :align: center
+   :stub-columns: 1
 
    * - C++
-     - Python
-     - Documentation
-   * - |cpp_ci|
+     - |cpp_ci|
+     - |cpp_cov|
+   * - Python
      - |python_ci|
-     - |docs_ci| 
-   * - |cpp_cov|
      - |python_cov|
-     - 
 
-Projects using Htool
+Projects including Htool-DDM
    Htool-DDM provides distributed solvers and black-box hierarchical compression. It can be used directly in C++, via its Python interface, or in the following projects:
 
-   - `FreeFEM <https://freefem.org>`_ to compress matrices stemming from the discretisation of boundary integral equations and iterative solvers,
-   - `PETSc <https://petsc.org/release/>`_ for black-box compression and iterative solvers.
+   - `FreeFEM`_ to compress matrices stemming from the discretisation of boundary integral equations and iterative solvers,
+   - `PETSc`_ for black-box compression and iterative solvers.
 
 License
    Htool is licensed under the terms of the MIT license that can be found in the LICENSE file. By using, distributing, or contributing to this project, you agree to the terms and conditions of this license.
@@ -44,14 +41,14 @@ Authors
    
    *Developers:*
 
-   - `Pierre Marchand <https://pierremarchand.netlify.app>`_
-   - `Pierre-Henri Tournier <https://phtournier.pages.math.cnrs.fr>`_
+   - `Pierre Marchand`_
+   - `Pierre-Henri Tournier`_
 
    *Contributors/Collaborators:*
 
-   - `Xavier Claeys <https://www.ljll.math.upmc.fr/~claeys/>`_ 
-   - `Pierre Jolivet <http://jolivet.perso.enseeiht.fr/>`_ 
-   - `Frédéric Nataf <https://www.ljll.math.upmc.fr/nataf/](>`_
+   - `Xavier Claeys`_ 
+   - `Pierre Jolivet`_ 
+   - `Frédéric Nataf`_
 
    *Acknowledgements*
 
@@ -63,10 +60,6 @@ Authors
 
 
 .. Badges
-
-.. |docs_ci| image:: https://readthedocs.org/projects/htool-documentation/badge/?version=latest
-   :alt: doc
-   :target: https://htool-documentation.readthedocs.io/en/latest/
 
 .. |cpp_ci| image:: https://github.com/htool-ddm/htool/actions/workflows/CI.yml/badge.svg
    :alt: cpp

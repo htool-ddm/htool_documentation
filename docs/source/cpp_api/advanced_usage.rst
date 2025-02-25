@@ -1,8 +1,5 @@
-
-.. _cpp_api:
-
-C++ -- Basic usage
-##################
+Advanced usage
+##############
 
 Installation
 ------------

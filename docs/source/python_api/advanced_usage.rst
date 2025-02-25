@@ -1,8 +1,5 @@
-
-.. _cpp_api:
-
-C++ -- Advance usage
-##################
+Advanced usage
+##############
 
 Installation
 ------------

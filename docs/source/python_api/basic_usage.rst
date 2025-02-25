@@ -1,8 +1,6 @@
 
-.. _python_api:
-
-Basic usage -- Python
-#####################
+Basic usage
+###########
 
 Defining a geometry
 -------------------

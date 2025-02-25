@@ -3,7 +3,7 @@
 Why using Htool-DDM?
 ####################
 
-Htool-DDM aims to provide iterative solvers with preconditioners stemming from domain decomposition methods (DDM). It uses matrix compression via **hierarchical matrices** by default, and in particular, it provides
+Htool-DDM aims to provide iterative solvers with preconditioners stemming from **domain decomposition methods** (DDM). It uses matrix compression via **hierarchical matrices** by default, and in particular, it provides
 
 - parallel matrix-vector and matrix-matrix product using MPI and OpenMP,
 - iterative solvers via `HPDDM`_,
@@ -20,10 +20,9 @@ Why?
 Applications
    Hierarchical matrices are generally used to compress matrices stemming from the discretisation of asymptotically smooth kernels :math:`\kappa (x,y)`, i.e, for two cluster of geometric points :math:`X` and :math:`Y`,
 
-.. math::
-    \rvert \partial_x^{\alpha} \partial_y^{\beta}\kappa (x,y)\lvert \leq C_{\mathrm{as}}\lvert x - y\rvert^{-\lvert \alpha \rvert -\lvert \beta \rvert - s}.
+   .. math::
+      \rvert \partial_x^{\alpha} \partial_y^{\beta}\kappa (x,y)\lvert \leq C_{\mathrm{as}}\lvert x - y\rvert^{-\lvert \alpha \rvert -\lvert \beta \rvert - s}.
 
-\
 
    with :math:`x\in X`, :math:`y\in Y`, :math:`x\neq y`, :math:`\alpha, \beta \in \mathbb{N}_0^d` and :math:`\alpha+\beta \neq 0`.
 

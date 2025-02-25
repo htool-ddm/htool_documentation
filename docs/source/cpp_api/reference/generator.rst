@@ -1,0 +1,4 @@
+Generator
+=========
+
+.. doxygenclass:: htool::VirtualGenerator
