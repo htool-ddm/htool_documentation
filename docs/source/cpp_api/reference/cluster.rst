@@ -1,8 +1,8 @@
 Geometric clustering
 ====================
 
-ClusterTreeBuilder
-------------------
+Builder
+-------
 
 .. doxygenclass:: htool::ClusterTreeBuilder
 

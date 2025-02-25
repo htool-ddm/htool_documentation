@@ -1,8 +1,8 @@
 Hierarchical matrix
 ===================
 
-Builder
--------
+Builders
+--------
 
 .. doxygenclass:: htool::HMatrixBuilder
 

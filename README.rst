@@ -16,16 +16,18 @@ It is also an extensible framework which contains several customization points. 
 
 The project is hosted on `GitHub <https://github.com/htool-ddm>`_, under the permissive `MIT license <https://en.wikipedia.org/wiki/MIT_License>`_.
 
-.. list-table::
-   :header-rows: 1
-   :stub-columns: 1
+.. only:: not latex
+   
+   .. list-table::
+      :header-rows: 1
+      :stub-columns: 1
 
-   * - C++
-     - |cpp_ci|
-     - |cpp_cov|
-   * - Python
-     - |python_ci|
-     - |python_cov|
+      * - C++
+        - |cpp_ci|
+        - |cpp_cov|
+      * - Python
+        - |python_ci|
+        - |python_cov|
 
 Projects including Htool-DDM
    Htool-DDM provides distributed solvers and black-box hierarchical compression. It can be used directly in C++, via its Python interface, or in the following projects:

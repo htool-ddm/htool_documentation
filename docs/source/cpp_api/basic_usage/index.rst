@@ -5,4 +5,6 @@ Basic usage
    :maxdepth: 2
    :caption: Overview
 
-   basic_usage
+   geometric_clustering
+   hierarchical_compression
+   ddm_solver

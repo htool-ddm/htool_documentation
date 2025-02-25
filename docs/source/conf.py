@@ -35,7 +35,6 @@ release = "1.0.0"
 extensions = [
     "sphinxcontrib.bibtex",
     "sphinx.ext.autosectionlabel",
-    "sphinxcontrib.rsvgconverter",
     "sphinx_copybutton",
     "breathe",
 ]

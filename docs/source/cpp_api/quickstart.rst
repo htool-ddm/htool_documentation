@@ -1,6 +1,12 @@
 Quickstart
 ##########
 
+Htool-DDM can be used for different use cases:
+
+* :ref:`cpp_api/quickstart:geometric clustering`
+* :ref:`cpp_api/quickstart:hierarchical compression`
+* :ref:`cpp_api/quickstart:ddm solver`
+
 Dependencies
 ============
 
@@ -46,6 +52,27 @@ Once installed, you can also use Htool-DDM as a cmake `imported target <https://
     add_executable(your_target your_file.cpp)
     target_link_libraries(your_target Htool::htool)
 
+Geometric clustering
+====================
+
+The hierarchical clustering of a geometry is contained in :cpp:class:`htool::Cluster` and can be created using a :cpp:class:`htool::ClusterTreeBuilder`. For example,
+
+.. code-block:: cpp
+
+        int number_points = 10000;
+        int spatial_dimension = 3;
+        int number_of_partitions = 2;
+        int number_of_children = 2;
+        std::vector<double> coordinates(number_points*spatial_dimension); 
+        // coordinates = {...}
+        htool::ClusterTreeBuilder<double> cluster_tree_builder;
+        htool::Cluster<double> cluster = cluster_tree_builder.create_cluster_tree(number_points, spatial_dimension, coordinates.data(), number_of_children, number_of_partitions);
+
+where
+
+* :code:`number_of_partitions` defines the number of children at a level of the cluster tree called "partition", which can be used to distribute data in a MPI context.
+* :code:`number_of_children` defines the nulber of children for the other nodes that are not leaves.
+
 Hierarchical compression
 ========================
 
@@ -76,7 +103,7 @@ Build a hierarchical matrix
 
 To build a :cpp:class:`htool::HMatrix`, a :cpp:class:`htool::HMatrixBuilder` can be used: 
 
-- Its constructor :cpp:func:`htool::HMatrixBuilder::HMatrixBuilder` takes at least a geometry.
+- Its constructor :cpp:func:`htool::HMatrixBuilder::HMatrixBuilder` takes at least one geometry.
 - :cpp:func:`htool::HMatrixBuilder::build` generates a :cpp:class:`htool::HMatrix` from a :ref:`cpp_api/quickstart:coefficient generator`, and a :cpp:class:`htool::HMatrixTreeBuilder` object containing all the parameters related to compression.
 
 
@@ -92,6 +119,8 @@ To build a :cpp:class:`htool::HMatrix`, a :cpp:class:`htool::HMatrixBuilder` can
         // coordinates = {...}
         htool::HMatrixBuilder<double> hmatrix_builder(number_points, spatial_dimension, coordinates.data());
         htool::HMatrix<double> hmatrix = hmatrix_builder.build(UserOperator(),htool::HMatrixTreeBuilder<double>(epsilon, eta, symmetry, uplo));
+
+.. note:: The geometric clustering is done within the constructor of :cpp:class:`htool::HMatrixBuilder`. You can still access the resulting target and source clusters as public members of :code:`hmatrix_builder`.
 
 Use a hierarchical matrix
 -------------------------
@@ -127,3 +156,40 @@ Basic linear algebra is provided for :cpp:class:`htool::HMatrix`. Shared-memory 
 
 DDM Solver
 ==========
+
+Distributed operator
+--------------------
+
+To assemble a distributed operator, first a :ref:`geometric clustering <cpp_api/quickstart:geometric clustering>` needs to be applied. The partition defined by the target geometric cluster tree is then used to define a row-wise distributed operator (see :ref:`introduction/ddm:row-wise distributed operator`). :cpp:class:`htool::DefaultApproximationBuilder` builds a row-wise distributed operator :cpp:class:`htool::DistributedOperator` where each block of rows is compressed using a :cpp:class:`htool::HMatrix`, which can be accessed as a public member.
+
+.. code-block:: cpp
+
+    htool::HMatrixTreeBuilder<double> hmatrix_tree_builder(epsilon, eta, symmetry, uplo)
+    htool::DefaultApproximationBuilder<double> distributed_operator_builder(UserOperator(), target_cluster, source_cluster, hmatrix_tree_builder,MPI_COMM_WORLD);
+    DistributedOperator<double> &distributed_operator = distributed_operator_builder.distributed_operator;
+
+A :cpp:class:`htool::DistributedOperator` object provides distributed products with matrices and vectors.
+
+Linear solver
+-------------
+
+The iterative linear solve will be done via a :cpp:class:`htool::DDM` object, which can be built using :cpp:class:`htool::DDMSolverBuilder`. We give here an example for a simple block-Jacobi solver, in particular we use :cpp:member:`htool::DefaultApproximationBuilder::block_diagonal_hmatrix`, which is a pointer to the :math:`\mathcal{H}` matrix for the block diagonal associated with the local subdomain.
+
+.. code-block:: cpp
+
+    // Create DDM object
+    htool::DDMSolverBuilder<double> ddm_solver_build(distributed_operator,distributed_operator_builder.block_diagonal_hmatrix);
+    htool::DDM<double> solver = ddm_solver_build.solver;
+
+    // Prepare solver
+    HPDDM::Option &opt = *HPDDM::Option::get();
+    opt.parse("-hpddm_schwarz_method asm ");
+    ddm_with_overlap.facto_one_level();
+
+    // Solve
+    int mu = 1 // number of right-hand side
+    std::vector<double> x = ...// unknowns
+    std::vector<double> b = ...// right-hand sides
+    ddm_with_overlap.solve(b.data(), x.data(), mu);
+
+.. note:: We rely on the external library `HPDDM`_ for the implementation of efficient iterative solvers. We refer to its `cheatsheet <https://github.com/hpddm/hpddm/raw/main/doc/cheatsheet.pdf>`_ listing the various possible options for the solver.

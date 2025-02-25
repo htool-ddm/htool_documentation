@@ -50,6 +50,8 @@
 
    documentation/installation
 
+   PDF version <https://htool-ddm.pages.math.cnrs.fr/htool-ddm.pdf>
+
 
 .. Indices and tables
 .. ==================

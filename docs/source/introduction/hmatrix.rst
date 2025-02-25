@@ -49,7 +49,7 @@ Generally, matrices of interest are not low-rank matrices, and do not have rapid
 .. math::
     \rvert \partial_x^{\alpha} \partial_y^{\beta}\kappa (x,y)\lvert \leq C_{\mathrm{as}}\lvert x - y\rvert^{-\lvert \alpha \rvert -\lvert \beta \rvert - s}.
 
-In this case, sub-blocks corresponding to the interaction between two clusters :math:`X` and :math:`Y` satisfying an *admissibility condition*,  
+In this case, sub-blocks corresponding to the interaction between two clusters :math:`X` and :math:`Y` satisfying an *admissibility condition*,
 
 .. math::
     \max (\operatorname{diam} (X), \operatorname{diam}(Y)) \leq \eta \operatorname{dist}(X,Y),
@@ -82,7 +82,7 @@ Then, hierarchical matrices are built traversing the block cluster tree starting
 - If the current block does not satisfy the admissibility condition
 
   - If it is leaf, we compute the block as a dense matrix,
-  - If it is not a leaf, we check the childen of the current block.
+  - If it is not a leaf, we check the children of the current block.
 
 
 

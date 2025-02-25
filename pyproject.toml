@@ -19,7 +19,6 @@ dependencies = [
   "sphinx",
   "sphinx-copybutton",
   "sphinxcontrib-bibtex",
-  "sphinxcontrib-svg2pdfconverter",
   "breathe",
   "furo",
 ]
