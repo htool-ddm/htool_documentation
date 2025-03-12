@@ -13,6 +13,39 @@ HMatrix
 
 .. doxygenclass:: htool::HMatrix
 
+Admissibility conditions
+------------------------
+
+.. doxygenclass:: htool::VirtualAdmissibilityCondition
+
+.. doxygenclass:: htool::RjasanowSteinbach
+
+Low-rank compression
+--------------------
+
+.. doxygenclass:: htool::VirtualLowRankGenerator
+
+.. doxygenclass:: htool::SVD
+
+.. doxygenclass:: htool::fullACA
+
+.. doxygenclass:: htool::partialACA
+
+.. doxygenclass:: htool::sympartialACA
+
+Visualisation
+-------------
+
+.. doxygenfunction:: htool::save_leaves_with_rank
+
+.. doxygenfunction:: htool::get_tree_parameters
+
+.. doxygenfunction:: htool::print_tree_parameters
+
+.. doxygenfunction:: htool::get_hmatrix_information
+
+.. doxygenfunction:: htool::print_hmatrix_information
+
 Linear algebra
 --------------
 

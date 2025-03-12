@@ -1,2 +1,5 @@
 Advanced usage
 ##############
+
+Geometric clustering
+====================
