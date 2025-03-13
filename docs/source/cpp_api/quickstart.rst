@@ -71,7 +71,7 @@ The hierarchical clustering of a geometry is contained in :cpp:class:`htool::Clu
 where
 
 * :code:`number_of_partitions` defines the number of children at a level of the cluster tree called "partition", which can be used to distribute data in a MPI context.
-* :code:`number_of_children` defines the nulber of children for the other nodes that are not leaves.
+* :code:`number_of_children` defines the number of children for the other nodes that are not leaves.
 
 Hierarchical compression
 ========================
