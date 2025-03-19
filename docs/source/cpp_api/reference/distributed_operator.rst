@@ -1,8 +1,8 @@
 Distributed operator
 ====================
 
-Builders
---------
+Builder
+-------
 
 .. doxygenclass:: htool::DefaultApproximationBuilder
 

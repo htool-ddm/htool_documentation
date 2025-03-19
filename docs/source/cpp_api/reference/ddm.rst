@@ -1,8 +1,8 @@
 DDM solvers
 ===========
 
-Builders
---------
+Builder
+-------
 
 .. doxygenclass:: htool::DDMSolverBuilder
 

@@ -2,6 +2,7 @@ Public API
 ##########
 
 .. toctree::
+    :maxdepth: 2
 
     generator.rst
     cluster.rst

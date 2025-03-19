@@ -7,12 +7,15 @@ Available customizations
 Compression via :cpp:class:`htool::HMatrixTreeBuilder` can be customized in the following aspects:
 
 1. For admissible condition, i.e., the geometric a priori we have to define admissible bloc, see :ref:`introduction/hmatrix:hierarchical clustering`, the current strategy is:
-    - :cpp:class:`htool::RjasanowSteinbach`
+   
+   - :cpp:class:`htool::RjasanowSteinbach`
+
 2. For low-rank compression, see :ref:`introduction/hmatrix:low-rank compression`, the available strategies are:
-    - :cpp:class:`htool::SVD`
-    - :cpp:class:`htool::fullACA`
-    - :cpp:class:`htool::partialACA`
-    - :cpp:class:`htool::sympartialACA`
+
+   - :cpp:class:`htool::SVD`
+   - :cpp:class:`htool::fullACA`
+   - :cpp:class:`htool::partialACA`
+   - :cpp:class:`htool::sympartialACA`
 
 Strategies are then given to :cpp:class:`htool::HMatrixTreeBuilder` via its constructor or its function members
 
