@@ -16,6 +16,7 @@ Compression via :cpp:class:`htool::HMatrixTreeBuilder` can be customized in the 
    - :cpp:class:`htool::fullACA`
    - :cpp:class:`htool::partialACA`
    - :cpp:class:`htool::sympartialACA`
+   - :cpp:class:`htool::RecompressedLowRankGenerator`
 
 Strategies are then given to :cpp:class:`htool::HMatrixTreeBuilder` via its constructor or its function members
 

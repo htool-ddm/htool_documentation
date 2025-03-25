@@ -33,6 +33,8 @@ Low-rank compression
 
 .. doxygenclass:: htool::sympartialACA
 
+.. doxygenclass:: htool::RecompressedLowRankGenerator
+
 Visualisation
 -------------
 

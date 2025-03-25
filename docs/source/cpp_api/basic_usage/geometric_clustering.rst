@@ -1,29 +1,26 @@
 Geometric clustering
 ####################
 
-A geometric clustering is a hierarchical partition of the underlying geometry on which the kernel matrix is defined.
+A geometric clustering is a hierarchical partition of the underlying geometry on which the kernel matrix is defined. See :cpp:func:`htool::ClusterTreeBuilder::create_cluster_tree` for more information about the available parameters to customize :cpp:class:`htool::Cluster` construction.
 
 Available customizations
 ------------------------
 
-To create geometric clustering with :cpp:class:`htool::ClusterTreeBuilder`, two type of strategies allow customization of the geometric clustering:
+To create geometric clustering with :cpp:class:`htool::ClusterTreeBuilder`, two type of strategies allow customization of the algorithm defining :math:`n_{\mathrm{children}}` children of a cluster node:
 
-1. Computation of the normal direction for the cutting plane. Available strategies are:
+1. Computation of the main directions for a given cluster node. Available strategies are:
 
    - :cpp:class:`htool::ComputeLargestExtent`
    - :cpp:class:`htool::ComputeBoundingBox`
 
-2. Splitting position along the previous computed direction. Available strategies are
+2. Splitting position of a cluster node along a given direction. Available strategies are
    
    - :cpp:class:`htool::RegularSplitting`
    - :cpp:class:`htool::GeometricSplitting`
 
-Strategies are then given to :cpp:class:`htool::ClusterTreeBuilder` via its function members 
+Strategies can be used to define a :cpp:class:`htool::Partitioning` that can be given to :cpp:class:`htool::ClusterTreeBuilder` via :cpp:func:`htool::ClusterTreeBuilder::set_partitioning_strategy`.
 
-1. :cpp:func:`htool::ClusterTreeBuilder::set_direction_computation_strategy` 
-2. :cpp:func:`htool::ClusterTreeBuilder::set_splitting_strategy` 
-
-The builder also accepts one parameter which is the minimal size of a cluster node via :cpp:func:`htool::ClusterTreeBuilder::set_minclustersize`.
+In any case, :cpp:class:`htool::Partitioning` will compute the main direction of the current cluster, using the first strategy, and split the current cluster :math:`n_{\mathrm{children}}` times orthogonally to this direction using the second strategy. Except in the case where :math:`n_{\mathrm{children}}=2^d` where :math:`d` is the spatial dimension, in which case it will split in two along each main directions. 
 
 See :ref:`here <cpp_api/advanced_usage:geometric clustering>` for more advanced customization.
 

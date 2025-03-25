@@ -11,11 +11,16 @@ Cluster
 
 .. doxygenclass:: htool::Cluster
 
+Partitioning interface
+----------------------
+
+.. doxygenclass:: htool::VirtualPartitioning
+
+.. doxygenclass:: htool::Partitioning
+
 
 Direction computation strategies
 --------------------------------
-
-.. doxygenclass:: htool::VirtualDirectionComputationStrategy
 
 .. doxygenclass:: htool::ComputeLargestExtent
 
@@ -24,8 +29,6 @@ Direction computation strategies
 
 Splitting strategies
 --------------------
-
-.. doxygenclass:: htool::VirtualSplittingStrategy
 
 .. doxygenclass:: htool::GeometricSplitting
 
