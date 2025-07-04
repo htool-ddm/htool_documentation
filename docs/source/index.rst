@@ -23,7 +23,7 @@
    introduction/getting_started
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 2
    :caption: C++ API
 
    cpp_api/quickstart

@@ -23,10 +23,10 @@ The project is hosted on `GitHub <https://github.com/htool-ddm>`_, under the per
       :stub-columns: 1
 
       * - C++
-        - |cpp_ci|
+        - |cpp_repo|
         - |cpp_cov|
       * - Python
-        - |python_ci|
+        - |python_repo|
         - |python_cov|
 
 Projects including Htool-DDM
@@ -63,17 +63,17 @@ Authors
 
 .. Badges
 
-.. |cpp_ci| image:: https://github.com/htool-ddm/htool/actions/workflows/CI.yml/badge.svg
-   :alt: cpp
+.. |cpp_repo| image:: https://img.shields.io/badge/repo-GitHub-blue?style=flat&link=https%3A%2F%2Fgithub.com%2Fhtool-ddm%2Fhtool
+   :alt: Static Badge
    :target: https://github.com/htool-ddm/htool
 
-.. |python_ci| image:: https://github.com/htool-ddm/htool_python/actions/workflows/CI.yml/badge.svg
-   :alt: python
+.. |python_repo| image:: https://img.shields.io/badge/repo-GitHub-blue?style=flat&link=https%3A%2F%2Fgithub.com%2Fhtool-ddm%2Fhtool
+   :alt: Static Badge
    :target: https://github.com/htool-ddm/htool_python
 
 .. |cpp_cov| image:: https://codecov.io/gh/htool-ddm/htool/branch/main/graph/badge.svg?token=1JJ40GPFA5
-      :alt: cpp_cov
-      :target: https://codecov.io/gh/htool-ddm/htool
+   :alt: cpp_cov
+   :target: https://codecov.io/gh/htool-ddm/htool
 
 .. |python_cov| image:: https://codecov.io/gh/htool-ddm/htool_python/branch/main/graph/badge.svg?token=P3FQNL8E64
    :target: https://codecov.io/gh/htool-ddm/htool_python
