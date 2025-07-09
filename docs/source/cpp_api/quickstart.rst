@@ -123,7 +123,7 @@ To build a :cpp:class:`htool::HMatrix`, a :cpp:class:`htool::HMatrixBuilder` can
 where 
 
 * :code:`epsilon` is the parameter controlling the relative error when compressing a subblock with a low-rank approximation.
-* :code:`eta` is the parameter :math:`\eta` in the :ref:`admissibility condition <eq:admissibility_condition>`.
+* :code:`eta` is the parameter :math:`\eta` in the admissibility condition :eq:`admissibility_condition`.
 * :code:`coordinates` stores all geometric points associated with the evaluation or discretisation of the kernel to be compressed, e.g., in 2d :math:`(x_0,y_0,x_1,y_1,...)`.
 
 .. note:: The geometric clustering is done within the constructor of :cpp:class:`htool::HMatrixBuilder`. You can still access the resulting target and source clusters as public members of :code:`hmatrix_builder`.
