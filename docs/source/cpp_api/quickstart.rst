@@ -63,7 +63,7 @@ The hierarchical clustering of a geometry is contained in :cpp:class:`htool::Clu
         int spatial_dimension = 3;
         int number_of_partitions = 2;
         int number_of_children = 2;
-        std::vector<double> coordinates(number_points*spatial_dimension); 
+        std::vector<double> coordinates(number_points*spatial_dimension);
         // coordinates = {...}
         htool::ClusterTreeBuilder<double> cluster_tree_builder;
         htool::Cluster<double> cluster = cluster_tree_builder.create_cluster_tree(number_points, spatial_dimension, coordinates.data(), number_of_children, number_of_partitions);
@@ -72,6 +72,7 @@ where
 
 * :code:`number_of_partitions` defines the number of children at a level of the cluster tree called "partition", which can be used to distribute data in a MPI context.
 * :code:`number_of_children` defines the number of children for the other nodes that are not leaves.
+* :code:`coordinates` stores all geometric points associated with the evaluation or discretisation of the kernel to be compressed, e.g., in 2d :math:`(x_0,y_0,x_1,y_1,...)`.
 
 Hierarchical compression
 ========================
@@ -84,7 +85,7 @@ To use the in-house hierarchical compression :cpp:class:`htool::HMatrix`, Htool-
 Coefficient generator
 ---------------------
 
-A coefficient generator is defined by following the interface :cpp:class:`htool::VirtualGenerator`, and in particular :cpp:func:`htool::VirtualGenerator::copy_submatrix`. For example:
+A coefficient generator is defined by following the interface :cpp:class:`htool::VirtualGenerator`, and in particular :cpp:func:`htool::VirtualGenerator::copy_submatrix`. For example, a user could define the following generator:
 
 .. code-block:: cpp
 
@@ -104,8 +105,7 @@ Build a hierarchical matrix
 To build a :cpp:class:`htool::HMatrix`, a :cpp:class:`htool::HMatrixBuilder` can be used: 
 
 - Its constructor :cpp:func:`htool::HMatrixBuilder::HMatrixBuilder` takes at least one geometry.
-- :cpp:func:`htool::HMatrixBuilder::build` generates a :cpp:class:`htool::HMatrix` from a :ref:`cpp_api/quickstart:coefficient generator`, and a :cpp:class:`htool::HMatrixTreeBuilder` object containing all the parameters related to compression.
-
+- :cpp:func:`htool::HMatrixBuilder::build <HMatrix<CoefficientsPrecision, CoordinatesPrecision> htool::HMatrixBuilder::build(const VirtualGenerator<CoefficientsPrecision> &, const HMatrixTreeBuilder<CoefficientsPrecision, CoordinatesPrecision> &)>` generates a :cpp:class:`htool::HMatrix` from a :ref:`cpp_api/quickstart:coefficient generator`, and a :cpp:class:`htool::HMatrixTreeBuilder` object containing all the parameters related to compression.
 
 .. code-block:: cpp
 
@@ -119,6 +119,12 @@ To build a :cpp:class:`htool::HMatrix`, a :cpp:class:`htool::HMatrixBuilder` can
         // coordinates = {...}
         htool::HMatrixBuilder<double> hmatrix_builder(number_points, spatial_dimension, coordinates.data());
         htool::HMatrix<double> hmatrix = hmatrix_builder.build(UserOperator(),htool::HMatrixTreeBuilder<double>(epsilon, eta, symmetry, uplo));
+
+where 
+
+* :code:`epsilon` is the parameter controlling the relative error when compressing a subblock with a low-rank approximation.
+* :code:`eta` is the parameter :math:`\eta` in the :ref:`admissibility condition <eq:admissibility_condition>`.
+* :code:`coordinates` stores all geometric points associated with the evaluation or discretisation of the kernel to be compressed, e.g., in 2d :math:`(x_0,y_0,x_1,y_1,...)`.
 
 .. note:: The geometric clustering is done within the constructor of :cpp:class:`htool::HMatrixBuilder`. You can still access the resulting target and source clusters as public members of :code:`hmatrix_builder`.
 

@@ -52,6 +52,8 @@ Generally, matrices of interest are not low-rank matrices, and do not have rapid
 In this case, sub-blocks corresponding to the interaction between two clusters :math:`X` and :math:`Y` satisfying an *admissibility condition*,
 
 .. math::
+  :name: eq:admissibility_condition
+
     \max (\operatorname{diam} (X), \operatorname{diam}(Y)) \leq \eta \operatorname{dist}(X,Y),
 
 have exponentially decreasing singular values. Thus, they can be well-approximated by low-rank matrices.
