@@ -5,7 +5,7 @@ Getting started
 Htool can be used directly via
 
 - its :ref:`C++ API <cpp_api/quickstart:quickstart>`
-- its `Python API <python_api/quickstart>`__.
+- its :ref:`Python API <python_api/quickstart:quickstart>`.
 
 When used via another library or software, we refer to its own documentation and examples:
 
@@ -22,7 +22,7 @@ When used via another library or software, we refer to its own documentation and
    * - `FreeFEM <https://freefem.org>`_
      - :math:`\geq` 4.5 
      - `documentation <https://doc.freefem.org/introduction/index.html>`__ 
-     - `2D <https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/hpddm/helmholtz-3d-line-PETSc-complex.edp>`_ and `3D <https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/hpddm/helmholtz-3d-surf-PETSc-complex.edp>`_ BEM with PETSc and `without <https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/mpi/Helmholtz_circle_Dirichlet.edp>`_ 
+     - `2D <https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/hpddm/helmholtz-3d-line-PETSc-complex.edp>`_ and `3D <https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/hpddm/helmholtz-3d-surf-PETSc-complex.edp>`_ BEM with PETSc and `without <https://github.com/FreeFem/FreeFem-sources/blob/master/examples/bem/Helmholtz_circle_Dirichlet_simple.edp>`_ 
    * - `PETSc <https://petsc.org/release/>`_
      - :math:`\geq` 3.16
      - `documentation <https://petsc.org/main/docs/manualpages/Mat/MATHTOOL.html#MATHTOOL>`_ 

@@ -34,7 +34,7 @@ Schwarz preconditioners
 A specific class of preconditionners stemming from Domain Decomposition Methods (DDM) are *Schwarz preconditioners*. They rely on a decomposition with overlap of our set of unknowns in :math:`N` subdomains. Each subdomain defines a local numbering with :math:`\sigma_p:\left\{1,\dots,n_p\right\}\to\left\{1,...,n\right\}`, where :math:`n_p` is the number of unknows in the p\ :superscript:`th` subdomain. Thus, the restriction matrix can be defined as :math:`\mathbf{R}_p\in \mathbb{R}^{n_p\times n}`
 
 .. math::
-    \left(\mathbf{R}\right)_{j,k} = 
+    \left(\mathbf{R}_p\right)_{j,k} = 
     \left\{
     \begin{aligned}
         1 & \quad\text{if }k=\sigma_p(j),\\

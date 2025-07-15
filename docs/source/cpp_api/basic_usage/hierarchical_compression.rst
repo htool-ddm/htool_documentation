@@ -41,7 +41,7 @@ Leaves from a :cpp:class:`htool::HMatrix` can be exported to a file with :cpp:fu
 
 A script is provided `here <https://github.com/htool-ddm/htool/blob/main/tools/plot_hmatrix.py>`__ to visualize a :math:`\mathcal{H}`-matrix using this type of file, but feel free to use your own. 
 
-Information about compression can also but accessed from a :cpp:class:`htool::HMatrix` with 
+Information about compression can also be accessed from a :cpp:class:`htool::HMatrix` with 
 
 - :cpp:func:`htool::get_tree_parameters`,
 - :cpp:func:`htool::get_hmatrix_information`,

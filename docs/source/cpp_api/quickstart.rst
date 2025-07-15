@@ -90,7 +90,7 @@ A coefficient generator is defined by following the interface :cpp:class:`htool:
 .. code-block:: cpp
 
     class UserOperator: public htool::VirtualGenerator<double>{
-        virtual void copy_submatrix(int M, int N, const int *rows, const int *cols, T *ptr) const override {
+        virtual void copy_submatrix(int M, int N, const int *rows, const int *cols, double *ptr) const override {
             for (int i = 0; i < M; i++) {
                 for (int j = 0; j < N; j++) {
                     ptr[i + M * j] = ...// A(rows[i], cols[j]) where A is the kernel to be compressed;
@@ -127,6 +127,8 @@ where
 * :code:`coordinates` stores all geometric points associated with the evaluation or discretisation of the kernel to be compressed, e.g., in 2d :math:`(x_0,y_0,x_1,y_1,...)`.
 
 .. note:: The geometric clustering is done within the constructor of :cpp:class:`htool::HMatrixBuilder`. You can still access the resulting target and source clusters as public members of :code:`hmatrix_builder`.
+
+.. warning:: :cpp:class:`htool::HMatrix` contains pointers to its target and source clusters. Thus, in general, clusters need to be deleted after :cpp:class:`htool::HMatrix` objects. In particular, when using a :cpp:class:`htool::HMatrixBuilder`, which contains the cluster, it needs to be deleted after :cpp:class:`htool::HMatrix`.
 
 Use a hierarchical matrix
 -------------------------
