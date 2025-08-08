@@ -1,7 +1,7 @@
 Domain decomposition solvers
 ############################
 
-This is a quick introduction to domain decomposition solvers for dense/compressed systems, and how they are implemented in Htool-DDM. These techniques have been introduced in :footcite:t:`Hebeker1990PSA` and analysed in papers like :footcite:t:`StephanTran1998DDA,Heuer1996EA$` for application to boundary integral equations. One goal of this library is to provide DD solvers with a GenEO coarse space :footcite:t:`MarchandClaeysEtAl2020TLP,Marchand2020SMB`.
+This is a quick introduction to domain decomposition solvers for dense/compressed systems, and how they are implemented in Htool-DDM. These techniques have been introduced in :footcite:t:`Hebeker1990PSA` and analysed in papers like :footcite:t:`StephanTran1998DDA,Heuer1996EA$` for application to boundary integral equations. One goal of this library is to provide DD solvers with a GenEO coarse space from :footcite:t:`MarchandClaeysEtAl2020TLP,Marchand2020SMB`.
 
 Iterative solvers
 =================
@@ -81,10 +81,10 @@ We refer :footcite:t:`MarchandClaeysEtAl2020TLP,Marchand2020SMB` where such coar
 Row-wise distributed operator
 =============================
 
-We focused so far on the preconditionner :math:`\mathbf{P}`, but the actual linear system :math:`\mathbf{A}` we want to solve also needs to be parallelized. We use a simple row-wise data-layout so that applying the preconditionner is relatively easy:
+We focused so far on the preconditionner :math:`\mathbf{P}`, but the actual linear system :math:`\mathbf{A}` we want to solve also needs to be parallelized. We use by default a simple row-wise data-layout so that applying the preconditionner is relatively easy:
 
 .. image:: /_static/hmat_parallelization.*
-    :align: center
+  :align: center
 
 The distribution of the linear system is defined via a partition induced by a level of the target cluster tree.
 

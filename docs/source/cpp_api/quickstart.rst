@@ -5,6 +5,7 @@ Htool-DDM can be used for different use cases:
 
 * :ref:`cpp_api/quickstart:geometric clustering`
 * :ref:`cpp_api/quickstart:hierarchical compression`
+* :ref:`cpp_api/quickstart:distributed operator`
 * :ref:`cpp_api/quickstart:ddm solver`
 
 Dependencies
@@ -74,6 +75,8 @@ where
 * :code:`number_of_children` defines the number of children for the other nodes that are not leaves.
 * :code:`coordinates` stores all geometric points associated with the evaluation or discretisation of the kernel to be compressed, e.g., in 2d :math:`(x_0,y_0,x_1,y_1,...)`.
 
+.. note:: See `example <https://github.com/htool-ddm/htool/blob/develop/examples/use_clustering.cpp>`__
+
 Hierarchical compression
 ========================
 
@@ -81,6 +84,8 @@ To use the in-house hierarchical compression :cpp:class:`htool::HMatrix`, Htool-
 
 1. The underlying geometry of the kernel to be compressed for the :ref:`introduction/hmatrix:geometric clustering`.
 2. A function to generate any coefficient of the matrix to be compressed. 
+
+.. note:: See `example <https://github.com/htool-ddm/htool/blob/develop/examples/use_hmatrix.cpp>`__
 
 Coefficient generator
 ---------------------
@@ -109,16 +114,25 @@ To build a :cpp:class:`htool::HMatrix`, a :cpp:class:`htool::HMatrixBuilder` can
 
 .. code-block:: cpp
 
-        int number_points = 10000;
-        int spatial_dimension = 3;
-        double epsilon = 1e-3;
-        double eta = 10;
-        char symmetry = 'N';
-        char uplo = 'N';
+        // Geometry
+        const int number_points     = 10000;
+        const int spatial_dimension = 3;
         std::vector<double> coordinates(number_points*spatial_dimension); 
         // coordinates = {...}
-        htool::HMatrixBuilder<double> hmatrix_builder(number_points, spatial_dimension, coordinates.data());
-        htool::HMatrix<double> hmatrix = hmatrix_builder.build(UserOperator(),htool::HMatrixTreeBuilder<double>(epsilon, eta, symmetry, uplo));
+
+        // HMatrix parameters
+        const double epsilon = 0.01;
+        const double eta     = 10;
+        char symmetry        = 'S';
+        char UPLO            = 'L';
+
+        // Generator
+        //UserOperator A = ...;
+
+        // HMatrix
+        HMatrixBuilder<double> hmatrix_builder(number_points, spatial_dimension, coordinates.data());
+        HMatrix<double> hmatrix = hmatrix_builder.build(A, htool::HMatrixTreeBuilder<double>(epsilon, eta, symmetry, UPLO));
+
 
 where 
 
@@ -133,14 +147,17 @@ where
 Use a hierarchical matrix
 -------------------------
 
-Basic linear algebra is provided for :cpp:class:`htool::HMatrix`. Shared-memory parallelism is also supported via execution policy traits.
+Basic linear algebra is provided for :cpp:class:`htool::HMatrix`. Shared-memory parallelism is also supported via execution policy traits for C++17 and above. 
 
-.. list-table:: Supported linear algebra
+.. list-table:: Supported operations
     :header-rows: 1
 
     * - Operations
       - C++ function
       - Supported execution policy
+    * - Assembly
+      - :cpp:func:`htool::HMatrixTreeBuilder::build <template<typename ExecutionPolicy> HMatrixType htool::HMatrixTreeBuilder::build(ExecutionPolicy&&, const VirtualInternalGenerator<CoefficientPrecision>&, const ClusterType&, const ClusterType&, int, int) const>` 
+      - `std::execution::seq <https://en.cppreference.com/w/cpp/algorithm/execution_policy_tag>`_, `std::execution::par <https://en.cppreference.com/w/cpp/algorithm/execution_policy_tag>`_
     * - :math:`\mathcal{H}`-matrix vector product
       - :cpp:func:`htool::add_hmatrix_vector_product`
       - `std::execution::seq <https://en.cppreference.com/w/cpp/algorithm/execution_policy_tag>`_, `std::execution::par <https://en.cppreference.com/w/cpp/algorithm/execution_policy_tag>`_
@@ -149,50 +166,69 @@ Basic linear algebra is provided for :cpp:class:`htool::HMatrix`. Shared-memory 
       - `std::execution::seq <https://en.cppreference.com/w/cpp/algorithm/execution_policy_tag>`_, `std::execution::par <https://en.cppreference.com/w/cpp/algorithm/execution_policy_tag>`_
     * - :math:`\mathcal{H}`-LU factorisation
       - :cpp:func:`htool::lu_factorization`
-      - None
+      - `std::execution::seq <https://en.cppreference.com/w/cpp/algorithm/execution_policy_tag>`_, `std::execution::par <https://en.cppreference.com/w/cpp/algorithm/execution_policy_tag>`_
     * - :math:`\mathcal{H}`-LU solve
       - :cpp:func:`htool::lu_solve`
       - None
     * - :math:`\mathcal{H}`-Cholesky factorisation
       - :cpp:func:`htool::cholesky_factorization`
-      - None
+      - `std::execution::seq <https://en.cppreference.com/w/cpp/algorithm/execution_policy_tag>`_, `std::execution::par <https://en.cppreference.com/w/cpp/algorithm/execution_policy_tag>`_
     * - :math:`\mathcal{H}`-Cholesky solve
       - :cpp:func:`htool::cholesky_solve`
       - None
 
-.. note:: We try to have a similar API to `BLAS`_/`LAPACK`_ or `<linalg> <https://en.cppreference.com/w/cpp/numeric/linalg>`_. In particular, parallel version of linear algebra functions are available using execution policy traits. If none is given, it defaults to sequential operation.
-
-DDM Solver
-==========
+.. note:: We try to have a similar API to `BLAS`_/`LAPACK`_ or `<linalg> <https://en.cppreference.com/w/cpp/numeric/linalg>`_. In particular, parallel version of linear algebra functions are available using execution policy traits. If none is given, it defaults to sequential operation. If the standard execution policy traits are unavailable, you can still use exec_compat::seq and exec_compat::par in C++17 and later, or invoke the underlying function directly with the parallelism type you need.
 
 Distributed operator
---------------------
+====================
+
+A :cpp:class:`htool::DistributedOperator` mainly consists in a vector of global-to-local and local-to-local operators. Here, local means a vector local to the current MPI process/partition.
+
+.. note:: See `example <https://github.com/htool-ddm/htool/blob/develop/examples/use_distributed_operator.cpp>`__
+
+Build a distributed operator
+----------------------------
 
 To assemble a distributed operator, first a :ref:`geometric clustering <cpp_api/quickstart:geometric clustering>` needs to be applied. The partition defined by the target geometric cluster tree is then used to define a row-wise distributed operator (see :ref:`introduction/ddm:row-wise distributed operator`). :cpp:class:`htool::DefaultApproximationBuilder` builds a row-wise distributed operator :cpp:class:`htool::DistributedOperator` where each block of rows is compressed using a :cpp:class:`htool::HMatrix`, which can be accessed as a public member.
 
 .. code-block:: cpp
 
     htool::HMatrixTreeBuilder<double> hmatrix_tree_builder(epsilon, eta, symmetry, uplo)
-    htool::DefaultApproximationBuilder<double> distributed_operator_builder(UserOperator(), target_cluster, source_cluster, hmatrix_tree_builder,MPI_COMM_WORLD);
-    DistributedOperator<double> &distributed_operator = distributed_operator_builder.distributed_operator;
+    htool::DefaultApproximationBuilder<double> default_approximation_builder(UserOperator(), target_cluster, source_cluster, hmatrix_tree_builder,MPI_COMM_WORLD);
+    DistributedOperator<double> &distributed_operator = default_approximation_builder.distributed_operator;
 
 A :cpp:class:`htool::DistributedOperator` object provides distributed products with matrices and vectors.
 
-Linear solver
--------------
+Use a distributed operator
+--------------------------
 
-The iterative linear solve will be done via a :cpp:class:`htool::DDM` object, which can be built using :cpp:class:`htool::DDMSolverBuilder`. We give here an example for a simple block-Jacobi solver, in particular we use :cpp:member:`htool::DefaultApproximationBuilder::block_diagonal_hmatrix`, which is a pointer to the :math:`\mathcal{H}` matrix for the block diagonal associated with the local subdomain.
+Basic linear algebra is provided for :cpp:class:`htool::DistributedOperator`. "Local" means local to the current MPI process/partition.
+
+.. list-table:: Supported operations
+    :header-rows: 1
+
+    * - Distributed operations
+    * - :cpp:func:`htool::add_distributed_operator_vector_product_local_to_local` 
+    * - :cpp:func:`htool::add_distributed_operator_matrix_product_local_to_local`
+    * - :cpp:func:`htool::add_distributed_operator_vector_product_global_to_global`
+    * - :cpp:func:`htool::add_distributed_operator_matrix_product_global_to_global`
+
+DDM Solver
+==========
+
+To solve the linear system associated with :cpp:class:`htool::DistributedOperator`, an iterative linear solve can be used via a :cpp:class:`htool::DDM` object. It can be built via a :cpp:class:`htool::DDMSolverBuilder`. We give here an example for a simple block-Jacobi solver, in particular we use :cpp:member:`htool::DefaultApproximationBuilder::block_diagonal_hmatrix`, which is a pointer to the :math:`\mathcal{H}` matrix for the block diagonal associated with the local subdomain.
 
 .. code-block:: cpp
 
     // Create DDM object
-    htool::DDMSolverBuilder<double> ddm_solver_build(distributed_operator,distributed_operator_builder.block_diagonal_hmatrix);
+    HMatrix<double> local_hmatrix = *default_approximation_builder.block_diagonal_hmatrix; // copy the block diagonal block to factorize it later
+    htool::DDMSolverBuilder<double> ddm_solver_build(distributed_operator,local_hmatrix);
     htool::DDM<double> solver = ddm_solver_build.solver;
 
     // Prepare solver
     HPDDM::Option &opt = *HPDDM::Option::get();
     opt.parse("-hpddm_schwarz_method asm ");
-    ddm_with_overlap.facto_one_level();
+    ddm_with_overlap.facto_one_level(); // block_diagonal_hmatrix is factorized in-place
 
     // Solve
     int mu = 1 // number of right-hand side
@@ -201,3 +237,5 @@ The iterative linear solve will be done via a :cpp:class:`htool::DDM` object, wh
     ddm_with_overlap.solve(b.data(), x.data(), mu);
 
 .. note:: We rely on the external library `HPDDM`_ for the implementation of efficient iterative solvers. We refer to its `cheatsheet <https://github.com/hpddm/hpddm/raw/main/doc/cheatsheet.pdf>`_ listing the various possible options for the solver.
+
+.. note:: See `example <https://github.com/htool-ddm/htool/blob/develop/examples/use_ddm_solver.cpp>`__

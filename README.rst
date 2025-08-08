@@ -49,6 +49,7 @@ Authors
    *Contributors/Collaborators:*
 
    - `Xavier Claeys`_ 
+   - `Virgile Dubos`_
    - `Pierre Jolivet`_ 
    - `Frédéric Nataf`_
 

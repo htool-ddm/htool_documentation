@@ -15,3 +15,4 @@
 .. _Xavier Claeys: https://claeys.pages.math.cnrs.fr
 .. _Pierre Jolivet: https://joliv.et 
 .. _Frédéric Nataf: https://www.ljll.fr/nataf/
+.. _Virgile Dubos: https://sites.google.com/view/webpageofdubosvirgile/
