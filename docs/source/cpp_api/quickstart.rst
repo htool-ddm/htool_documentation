@@ -31,7 +31,7 @@ And
 Installation
 ============
 
-It is sufficient to include the :code:`include` folder of this repository in your library. If you prefer, the following command copies the :code:`include` folder your OS-specific include directory to make it more widely available: in the root of this repository on your system,
+It is sufficient to include the :code:`include` folder of this repository in your library. If you prefer, the following command copies the :code:`include` folder to your OS-specific include directory to make it more widely available: in the root of this repository on your system,
 
 .. code-block:: bash
 

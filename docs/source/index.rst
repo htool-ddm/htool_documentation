@@ -42,6 +42,7 @@
    python_api/basic_usage
    python_api/advanced_usage
    python_api/developer_guide
+   python_api/reference/index
 
 
 .. toctree::

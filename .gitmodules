@@ -1,3 +1,6 @@
 [submodule "docs/htool"]
 	path = docs/htool
 	url = https://github.com/htool-ddm/htool.git
+[submodule "docs/htool_python"]
+	path = docs/htool_python
+	url = git@github.com:htool-ddm/htool_python.git

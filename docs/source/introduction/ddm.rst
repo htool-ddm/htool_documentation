@@ -31,7 +31,7 @@ with the aim of making the preconditioned linear system :math:`\mathbf{P} \mathb
 Schwarz preconditioners
 =======================
 
-A specific class of preconditionners stemming from Domain Decomposition Methods (DDM) are *Schwarz preconditioners*. They rely on a decomposition with overlap of our set of unknowns in :math:`N` subdomains. Each subdomain defines a local numbering with :math:`\sigma_p:\left\{1,\dots,n_p\right\}\to\left\{1,...,n\right\}`, where :math:`n_p` is the number of unknows in the p\ :superscript:`th` subdomain. Thus, the restriction matrix can be defined as :math:`\mathbf{R}_p\in \mathbb{R}^{n_p\times n}`
+A specific class of preconditioners stemming from Domain Decomposition Methods (DDM) are *Schwarz preconditioners*. They rely on a decomposition with overlap of our set of unknowns in :math:`N` subdomains. Each subdomain defines a local numbering with :math:`\sigma_p:\left\{1,\dots,n_p\right\}\to\left\{1,...,n\right\}`, where :math:`n_p` is the number of unknows in the p\ :superscript:`th` subdomain. Thus, the restriction matrix can be defined as :math:`\mathbf{R}_p\in \mathbb{R}^{n_p\times n}`
 
 .. math::
     \left(\mathbf{R}_p\right)_{j,k} = 
@@ -47,7 +47,7 @@ Its transpose :math:`\mathbf{R}_p^T` defines the extension by zero, and :math:`\
 .. math::
     \mathbf{P}_{\mathrm{ASM}}= \sum_{p=1}^N \mathbf{R}_p^T(\mathbf{R}_p \mathbf{A}\mathbf{R}_p^T)^{-1} \mathbf{R}_p,
 
-which is called a *Additive Schwarz Method* (ASM) preconditionner.
+which is called a *Additive Schwarz Method* (ASM) preconditioner.
 
 .. note:: It lends itself well in a distributed-memory context because it relies on solving local problem independently. Typically, a subdomain will be associated with one MPI process.
 
@@ -56,7 +56,7 @@ GenEO coarse space
 
 If Schwarz preconditioners, and DD preconditioners in general, improve iterative solving of linear systems (by lowering the number of required matrix-vector products), their efficiency decrease when the number of subdomains (and thus MPI processes) increases.
 
-To make those preconditionners more robust when :math:`N` increases, a recurring technique is to add a small *coarse space*. It defines the columns of :math:`\mathbf{R}_0^T` so that :math:`\mathbf{R}_0 \mathbf{A}\mathbf{R}_0^T` is a global matrix of small size. Then, a coarse space can be used additively with :math:`\mathbf{P}_{\mathrm{ASM}}`:
+To make those preconditioners more robust when :math:`N` increases, a recurring technique is to add a small *coarse space*. It defines the columns of :math:`\mathbf{R}_0^T` so that :math:`\mathbf{R}_0 \mathbf{A}\mathbf{R}_0^T` is a global matrix of small size. Then, a coarse space can be used additively with :math:`\mathbf{P}_{\mathrm{ASM}}`:
 
 .. math::
     \mathbf{P}_{\mathrm{ASM},2}= \mathbf{R}_0^T(\mathbf{R}_0 \mathbf{A}\mathbf{R}_0^T)^{-1} \mathbf{R}_0 + \sum_{p=1}^N \mathbf{R}_p^T(\mathbf{R}_p \mathbf{A}\mathbf{R}_p^T)^{-1} \mathbf{R}_p.
@@ -81,7 +81,7 @@ We refer :footcite:t:`MarchandClaeysEtAl2020TLP,Marchand2020SMB` where such coar
 Row-wise distributed operator
 =============================
 
-We focused so far on the preconditionner :math:`\mathbf{P}`, but the actual linear system :math:`\mathbf{A}` we want to solve also needs to be parallelized. We use by default a simple row-wise data-layout so that applying the preconditionner is relatively easy:
+We focused so far on the preconditioner :math:`\mathbf{P}`, but the actual linear system :math:`\mathbf{A}` we want to solve also needs to be parallelized. We use by default a simple row-wise data-layout so that applying the preconditioner is relatively easy:
 
 .. image:: /_static/hmat_parallelization.*
   :align: center
