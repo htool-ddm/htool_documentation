@@ -39,7 +39,7 @@
    :caption: Python API
 
    python_api/quickstart
-   python_api/basic_usage
+   python_api/basic_usage/index
    python_api/advanced_usage
    python_api/developer_guide
    python_api/reference/index
