@@ -33,6 +33,8 @@ Information about compression can also be accessed from a :py:class:`Htool.HMatr
 - :py:meth:`Htool.HMatrix.get_tree_parameters`,
 - :py:meth:`Htool.HMatrix.get_local_information`.
 
+Leaves of :py:class:`Htool.HMatrix` can be plotted via `matplotlib`_.
+
 .. code-block:: python
 
    fig = plt.figure()

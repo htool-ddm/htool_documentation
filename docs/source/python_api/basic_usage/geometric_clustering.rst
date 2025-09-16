@@ -29,7 +29,7 @@ and be used with :py:meth:`Htool.ClusterTreeBuilder.set_partitioning_strategy`.
 
 In any case, the partitioning strategy will compute the main direction of the current cluster, using the first strategy, and split the current cluster :math:`n_{\mathrm{children}}` times orthogonally to this direction using the second strategy.
 
-See :ref:`here <python_api/advanced_usage:geometric clustering>` for more advanced customization.
+.. See :ref:`here <python_api/advanced_usage:geometric clustering>` for more advanced customization.
 
 Visualisation
 -------------
