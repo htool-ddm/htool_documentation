@@ -111,3 +111,16 @@ pathlib.Path(output_dir).mkdir(exist_ok=True, parents=True)
 configureDoxyfile(input_dir, output_dir)
 subprocess.call("doxygen Doxyfile.in", shell=True)
 breathe_projects["Htool"] = output_dir + "/xml"
+
+# LaTeX
+latex_toplevel_sectioning = "part"
+
+latex_documents = [
+    (
+        "latex_index",
+        "htool-ddm.tex",
+        project,
+        "P. Marchand \\and P.-H. Tournier",
+        "manual",
+    ),
+]
