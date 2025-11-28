@@ -46,12 +46,10 @@ Once installed, you can also use Htool-DDM as a cmake `imported target <https://
 .. code-block:: cmake
 
     find_package(Htool REQUIRED)
-    find_package(MPI REQUIRED)
-    find_package(BLAS REQUIRED)
-    # other optional packages
 
     add_executable(your_target your_file.cpp)
     target_link_libraries(your_target Htool::htool)
+    target_include_directories(your_target PUBLIC "path/to/hpddm") # if using Htool/HPDDM solvers
 
 Geometric clustering
 ====================
@@ -75,7 +73,11 @@ where
 * :code:`number_of_children` defines the number of children for the other nodes that are not leaves.
 * :code:`coordinates` stores all geometric points associated with the evaluation or discretisation of the kernel to be compressed, e.g., in 2d :math:`(x_0,y_0,x_1,y_1,...)`.
 
-.. note:: See `example <https://github.com/htool-ddm/htool/blob/develop/examples/use_clustering.cpp>`__
+.. note:: See example in `use_cluster.cpp <https://github.com/htool-ddm/htool/blob/main/examples/use_clustering.cpp>`__ which creates a file containing the first three levels of a cluster tree. The output file can be visualized with `tools/plot_cluster.py <https://github.com/htool-ddm/htool/blob/main/tools/plot_cluster.py>`__ and the command line 
+
+  .. code-block:: bash
+
+      python3 plot_cluster.py --inputfile path/to/clustering_output.csv --depth 1
 
 Hierarchical compression
 ========================
@@ -85,7 +87,12 @@ To use the in-house hierarchical compression :cpp:class:`htool::HMatrix`, Htool-
 1. The underlying geometry of the kernel to be compressed for the :ref:`introduction/hmatrix:geometric clustering`.
 2. A function to generate any coefficient of the matrix to be compressed. 
 
-.. note:: See `example <https://github.com/htool-ddm/htool/blob/develop/examples/use_hmatrix.cpp>`__
+.. note:: See example in `use_hmatrix.cpp <https://github.com/htool-ddm/htool/blob/develop/examples/use_hmatrix.cpp>`__ which assembles a :math:`\mathcal{H}`-matrix, prints several outputs, and creates a file containing the rank of its leaves. The output file can be visualized with `tools/plot_hmatrix.py <https://github.com/htool-ddm/htool/blob/main/tools/plot_hmatrix.py>`__ and the command line 
+
+  .. code-block:: bash
+
+      python3 plot_hmatrix.py --inputfile path/to/hmatrix.csv
+
 
 Coefficient generator
 ---------------------
@@ -184,7 +191,11 @@ Distributed operator
 
 A :cpp:class:`htool::DistributedOperator` mainly consists in a vector of global-to-local and local-to-local operators. Here, local means a vector local to the current MPI process/partition.
 
-.. note:: See `example <https://github.com/htool-ddm/htool/blob/develop/examples/use_distributed_operator.cpp>`__
+.. note:: See example in `use_distributed_operator.cpp <https://github.com/htool-ddm/htool/blob/develop/examples/use_distributed_operator.cpp>`__ which assembles a distributed operator with local :math:`\mathcal{H}`-matrices, prints several outputs, and creates files containing the rank of each local :math:`\mathcal{H}`-matrix leaves. The output files can be visualized with `tools/plot_hmatrix.py <https://github.com/htool-ddm/htool/blob/main/tools/plot_hmatrix.py>`__ and the command line 
+
+  .. code-block:: bash
+
+      python3 plot_hmatrix.py --inputfile path/to/local_hmatrix_0.csv
 
 Build a distributed operator
 ----------------------------
@@ -238,4 +249,4 @@ To solve the linear system associated with :cpp:class:`htool::DistributedOperato
 
 .. note:: We rely on the external library `HPDDM`_ for the implementation of efficient iterative solvers. We refer to its `cheatsheet <https://github.com/hpddm/hpddm/raw/main/doc/cheatsheet.pdf>`_ listing the various possible options for the solver.
 
-.. note:: See `example <https://github.com/htool-ddm/htool/blob/develop/examples/use_ddm_solver.cpp>`__
+.. note:: See example `use_ddm_solver.cpp <https://github.com/htool-ddm/htool/blob/develop/examples/use_ddm_solver.cpp>`__ which solves a linear system stored in a :cpp:class:`htool::DistributedOperator` object using CG and a block-Jacobi preconditioner.
