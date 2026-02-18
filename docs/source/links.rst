@@ -16,3 +16,6 @@
 .. _Pierre Jolivet: https://joliv.et 
 .. _Frédéric Nataf: https://www.ljll.fr/nataf/
 .. _Virgile Dubos: https://sites.google.com/view/webpageofdubosvirgile/
+
+.. |joss-paper| image:: https://joss.theoj.org/papers/10.21105/joss.09279/status.svg
+   :target: https://doi.org/10.21105/joss.09279

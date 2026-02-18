@@ -20,6 +20,7 @@ Overview
     introduction/hmatrix
     introduction/ddm
     introduction/getting_started
+    introduction/citation
 
 C++ API
 -------
