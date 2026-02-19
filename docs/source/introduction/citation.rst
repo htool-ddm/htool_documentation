@@ -14,7 +14,7 @@ Citing Htool-DDM
     @Article{MarchandTournierEtAl2026HDC,
         author    = {Marchand, Pierre and Tournier, Pierre-Henri and Jolivet, Pierre},
         journal   = {Journal of Open Source Software},
-        title     = {Htool-DDM: A C++ library for parallel solvers and compressed linear systems.},
+        title     = {Htool-DDM: A C++ library for parallel solvers and compressed linear systems},
         year      = {2026},
         issn      = {2475-9066},
         month     = feb,
