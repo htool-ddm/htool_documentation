@@ -11,7 +11,7 @@ Htool-DDM -- Parallel solvers for compressed matrices
 
 It is also an extensible framework which contains several customization points. For example, one can provide its own compression algorithm, or customize the default hierarchical compression. Via its interface with `HPDDM`_, it is also a flexible tool to test various iterative solvers and preconditioners.
 
-The project is hosted on `GitHub <https://github.com/htool-ddm>`_, under the permissive `MIT license <https://en.wikipedia.org/wiki/MIT_License>`_.
+The project is hosted on `GitHub <https://github.com/htool-ddm>`_ under the permissive `MIT license <https://en.wikipedia.org/wiki/MIT_License>`_, see :ref:`introduction/citation:citing htool-ddm`.
 
 .. only:: not latex
    
