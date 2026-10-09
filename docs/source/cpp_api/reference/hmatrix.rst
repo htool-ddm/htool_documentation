@@ -62,3 +62,12 @@ Linear algebra
 .. doxygenfunction:: htool::cholesky_factorization(ExecutionPolicy&&, char UPLO, HMatrix<CoefficientPrecision, CoordinatePrecision> &hmatrix)
     
 .. doxygenfunction:: htool::cholesky_solve(char UPLO, const HMatrix<typename Mat::value_type, CoordinatePrecision> &A, Mat &X)
+
+.. doxygenfunction:: htool::ldlt_factorization(ExecutionPolicy&&, char symmetry, char UPLO, HMatrix<CoefficientPrecision, CoordinatePrecision> &hmatrix)
+
+.. doxygenfunction:: htool::ldlt_solve(char symmetry, char UPLO, const HMatrix<typename Mat::value_type, CoordinatePrecision> &A, Mat &X)
+
+Execution policies
+------------------
+
+.. doxygenstruct:: htool::omp_task_policy

@@ -164,7 +164,7 @@ Basic linear algebra is provided for :cpp:class:`htool::HMatrix`. Shared-memory 
       - Supported execution policy
     * - Assembly
       - :cpp:func:`htool::HMatrixTreeBuilder::build <template<typename ExecutionPolicy> HMatrixType htool::HMatrixTreeBuilder::build(ExecutionPolicy&&, const VirtualInternalGenerator<CoefficientPrecision>&, const ClusterType&, const ClusterType&, int, int) const>` 
-      - `std::execution::seq <https://en.cppreference.com/w/cpp/algorithm/execution_policy_tag>`_, `std::execution::par <https://en.cppreference.com/w/cpp/algorithm/execution_policy_tag>`_
+      - `std::execution::seq <https://en.cppreference.com/w/cpp/algorithm/execution_policy_tag>`_, `std::execution::par <https://en.cppreference.com/w/cpp/algorithm/execution_policy_tag>`_, :cpp:struct:`htool::omp_task_policy`
     * - :math:`\mathcal{H}`-matrix vector product
       - :cpp:func:`htool::add_hmatrix_vector_product`
       - `std::execution::seq <https://en.cppreference.com/w/cpp/algorithm/execution_policy_tag>`_, `std::execution::par <https://en.cppreference.com/w/cpp/algorithm/execution_policy_tag>`_
@@ -173,18 +173,26 @@ Basic linear algebra is provided for :cpp:class:`htool::HMatrix`. Shared-memory 
       - `std::execution::seq <https://en.cppreference.com/w/cpp/algorithm/execution_policy_tag>`_, `std::execution::par <https://en.cppreference.com/w/cpp/algorithm/execution_policy_tag>`_
     * - :math:`\mathcal{H}`-LU factorisation
       - :cpp:func:`htool::lu_factorization`
-      - `std::execution::seq <https://en.cppreference.com/w/cpp/algorithm/execution_policy_tag>`_, `std::execution::par <https://en.cppreference.com/w/cpp/algorithm/execution_policy_tag>`_
+      - `std::execution::seq <https://en.cppreference.com/w/cpp/algorithm/execution_policy_tag>`_, `std::execution::par <https://en.cppreference.com/w/cpp/algorithm/execution_policy_tag>`_, :cpp:struct:`htool::omp_task_policy`
     * - :math:`\mathcal{H}`-LU solve
       - :cpp:func:`htool::lu_solve`
       - None
     * - :math:`\mathcal{H}`-Cholesky factorisation
       - :cpp:func:`htool::cholesky_factorization`
-      - `std::execution::seq <https://en.cppreference.com/w/cpp/algorithm/execution_policy_tag>`_, `std::execution::par <https://en.cppreference.com/w/cpp/algorithm/execution_policy_tag>`_
+      - `std::execution::seq <https://en.cppreference.com/w/cpp/algorithm/execution_policy_tag>`_, `std::execution::par <https://en.cppreference.com/w/cpp/algorithm/execution_policy_tag>`_, :cpp:struct:`htool::omp_task_policy`
     * - :math:`\mathcal{H}`-Cholesky solve
       - :cpp:func:`htool::cholesky_solve`
       - None
+    * - :math:`\mathcal{H}`-LDLt factorisation
+      - :cpp:func:`htool::ldlt_factorization`
+      - `std::execution::seq <https://en.cppreference.com/w/cpp/algorithm/execution_policy_tag>`_, `std::execution::par <https://en.cppreference.com/w/cpp/algorithm/execution_policy_tag>`_, :cpp:struct:`htool::omp_task_policy`
+    * - :math:`\mathcal{H}`-LDLt solve
+      - :cpp:func:`htool::ldlt_solve`
+      - None
 
 .. note:: We try to have a similar API to `BLAS`_/`LAPACK`_ or `<linalg> <https://en.cppreference.com/w/cpp/numeric/linalg>`_. In particular, parallel version of linear algebra functions are available using execution policy traits. If none is given, it defaults to sequential operation. If the standard execution policy traits are unavailable, you can still use exec_compat::seq and exec_compat::par in C++17 and later, or invoke the underlying function directly with the parallelism type you need.
+
+.. note:: With :cpp:struct:`htool::omp_task_policy`, the assembly and factorizations use OpenMP tasks, and the same policy can be passed to successive calls. Called outside a parallel region, they create one and return once their tasks are completed. Called inside a parallel region (in a ``single`` construct, for example), they only create their tasks, so that the tasks of successive calls with the same policy, like an assembly followed by a factorization, overlap through their dependencies: the :cpp:class:`htool::HMatrix` is then only complete after a ``taskwait`` or at the end of the region.
 
 Distributed operator
 ====================
