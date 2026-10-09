@@ -113,7 +113,7 @@ subprocess.call("doxygen Doxyfile.in", shell=True)
 breathe_projects["Htool"] = output_dir + "/xml"
 
 # LaTeX
-latex_toplevel_sectioning = "part"
+latex_toplevel_sectioning = "chapter"
 
 latex_documents = [
     (

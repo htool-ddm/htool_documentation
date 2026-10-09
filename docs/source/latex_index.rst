@@ -21,6 +21,7 @@ Overview
     introduction/ddm
     introduction/getting_started
     introduction/citation
+    introduction/benchmarks
 
 C++ API
 -------

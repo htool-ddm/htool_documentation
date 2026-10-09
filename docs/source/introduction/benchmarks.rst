@@ -94,7 +94,9 @@ In the result CSV files one can find the following columns:
 - The hardware used for the result ``hardware_type``, and
 - The version of Htool used ``version``.
   
-**Remark** : The ``par`` execution policy corresponds to the use of shared parallelism with OpenMP, typically with ``# pragma omp for`` instructions if possible (products) or task-based parallelism (factorizations) with ``# pragma omp task`` instructions otherwise. The ``omp_task`` implementation only uses task-based parallelism with ``# pragma omp task`` instructions.
+.. note:: 
+  
+  The ``par`` execution policy corresponds to the use of shared parallelism with OpenMP, typically with ``# pragma omp for`` instructions if possible (products) or task-based parallelism (factorizations) with ``# pragma omp task`` instructions otherwise. The ``omp_task`` implementation only uses task-based parallelism with ``# pragma omp task`` instructions.
 
 Results
 =======
